@@ -2,7 +2,7 @@
 //import express from 'express'
 var express = require('express');
 // Definimos App como la función del módulo Express
-const App = express()
+var App = express()
 
 // Definimos algunas variables que usaremos en las distintas funciones
 const port = process.env.PORT || 3000  
