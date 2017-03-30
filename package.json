@@ -1,0 +1,21 @@
+{
+  "name": "ws-chat",
+  "version": "1.0.0",
+  "description": "chat basic websocket",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "author": "innova",
+  "license": "ISC",
+  "engines": {
+    "node": "4.1.1"
+  },
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
