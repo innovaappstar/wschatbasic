@@ -4,7 +4,7 @@
  */
 var express_1 = require('express');
 var router = express_1.Router();
-router.get('/', function (req, res) {
+router.get('/home', function (req, res) {
     res.render('index');
 });
 router.post('/', function (req, res) {
