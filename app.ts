@@ -6,9 +6,11 @@ import res = require("~express/lib/response");
 // import mongoose = require('mongoose');
 // import db = require('./config/db');
 // import DataSQL = require ('./models/DataSQL/DataSQL');
-// import wsRoutes from './routes/wsRoutes';
+import wsRoutes from './routes/wsRoutes';
 import homeRoutes from './routes/homeRoutes';
 import config from './config/Config';
+import ws from './controllers/ws/ws';
+
 // import ws = require ('./controllers/ws');
 // import ws from './controllers/ws';
 // import JSONUtils = require("./utils/JSONUtils");
@@ -20,13 +22,15 @@ import config from './config/Config';
 // ws.getInstance();  // inicia servicio websocket
 
 let app = express();
-// app.use('/api/ws', wsRoutes);
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 // make express look in the public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/public'));
+
 app.use('/', homeRoutes);
+app.use('/api/ws', wsRoutes);
+ws.getInstance();  // inicia servicio websocket
 
 app.listen(config.puerto, function (error) {
     if(error)

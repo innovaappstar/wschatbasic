@@ -8,7 +8,8 @@ var config = {
         app: {
             nombre: 'servidor-procesador'
         },
-        puerto: process.env.PORT || 3000,
+        puerto: process.env.PORT || 2000,
+        puertows: process.env.PORT || 3000,
         host: 'localhost',
         db: 'localhost:27017/vci'
     },
@@ -17,6 +18,7 @@ var config = {
             nombre: 'servidor-procesador'
         },
         puerto: process.env.PORT || 3000,
+        puertows: process.env.PORT || 3000,
         host: 'localhost',
         db: '192.168.1.99:27017/wsgps-development'
     },
@@ -25,6 +27,7 @@ var config = {
             nombre: 'servidor-procesador'
         },
         puerto: process.env.PORT || 3000,
+        puertows: process.env.PORT || 3000,
         host: 'localhost',
         db: '192.168.1.99:27017/wsgps-development'
     }

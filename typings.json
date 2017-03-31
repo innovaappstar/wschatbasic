@@ -1,7 +1,9 @@
 {
   "globalDependencies": {
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160726072212",
-    "node": "registry:dt/node#7.0.0+20170322231424"
+    "express-session": "registry:dt/express-session#0.0.0+20161119044246",
+    "node": "registry:dt/node#7.0.0+20170322231424",
+    "query-string": "registry:dt/query-string#4.3.0+20170315104407"
   },
   "dependencies": {
     "mime": "registry:dt/mime#0.0.0+20160428043022"
