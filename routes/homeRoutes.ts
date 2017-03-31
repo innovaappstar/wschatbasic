@@ -4,7 +4,7 @@
 import {Router, Request , Response} from 'express';
 var router = Router();
 
-router.get('/home', (req : Request, res : Response) =>
+router.get('/', (req : Request, res : Response) =>
 {
     res.render('index');
 });

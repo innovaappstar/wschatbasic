@@ -28,7 +28,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use('/', homeRoutes);
 
-app.listen(config.puerto, config.host, function (error) {
+app.listen(config.puerto, function (error) {
     if(error)
     {
         console.log('error al iniciar el servidor ', + error)

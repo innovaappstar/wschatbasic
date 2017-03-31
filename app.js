@@ -23,7 +23,7 @@ app.set('view engine', 'ejs');
 // make express look in the public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/public'));
 app.use('/', homeRoutes_1.default);
-app.listen(Config_1.default.puerto, Config_1.default.host, function (error) {
+app.listen(Config_1.default.puerto, function (error) {
     if (error) {
         console.log('error al iniciar el servidor ', +error);
         return;
