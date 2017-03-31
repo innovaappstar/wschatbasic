@@ -32,11 +32,11 @@ app.use('/', homeRoutes);
 app.use('/api/ws', wsRoutes);
 ws.getInstance();  // inicia servicio websocket
 
-app.listen(config.puerto, function (error) {
-    if(error)
-    {
-        console.log('error al iniciar el servidor ', + error)
-        return;
-    }
-    console.log('servidor iniciado en ' + config.host + ':' + config.puerto);
-});
+// app.listen(config.puerto, function (error) {
+//     if(error)
+//     {
+//         console.log('error al iniciar el servidor ', + error)
+//         return;
+//     }
+//     console.log('servidor iniciado en ' + config.host + ':' + config.puerto);
+// });
