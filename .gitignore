@@ -27,5 +27,7 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
-
+#ficheros tts
+*.js.*
+typings/
 .idea
