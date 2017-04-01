@@ -32,5 +32,4 @@ class URLUtils
     }
 
 }
-
-export = URLUtils;
+export {URLUtils}

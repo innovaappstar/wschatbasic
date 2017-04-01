@@ -7,26 +7,23 @@ import WebSocket = require("ws");
 //https://medium.com/@Zenkilies/express-session-with-typescript-85bf6dff3dc9#.ptzk6z5uy
 import session = require('express-session');
 import qs = require("query-string");
-import URLUtils = require('../../utils/URLUtils');
+import {URLUtils} from '../../utils/URLUtils';
 import SesionObserver = require("../observer/SesionObserver");
-
-// const express = require('express');
-// const app = express();
 
 abstract class BaseWebSocket{
 
    //http://stackoverflow.com/questions/22429744/how-to-setup-route-for-websocket-server-in-express
    private ws : WebSocketServer.Server = new WebSocketServer.Server({
       verifyClient: (info, done) =>{
-         // var url  = info.req.url;
-         // if (URLUtils.VerificarInteger(url, Header.codDispositivo) &&
-         //     URLUtils.VerificarInteger(url, Header.codTipoDispositivo) &&
-         //     URLUtils.VerificarInteger(url, Header.codEmpresa) &&
-         //     URLUtils.VerificarString(url, Header.imei))
-         //    done(true);
-         // else
-         //    done(false);
-          done(true);
+         var url  = info.req.url;
+         if (URLUtils.VerificarInteger(url, Header.codDispositivo) &&
+             URLUtils.VerificarInteger(url, Header.codTipoDispositivo) &&
+             URLUtils.VerificarInteger(url, Header.codEmpresa) &&
+             URLUtils.VerificarString(url, Header.imei))
+            done(true);
+         else
+            done(false);
+          // done(true);
       }, port: config.puertows, path : '/ws'});
 
    constructor()

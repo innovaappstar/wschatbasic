@@ -3,11 +3,11 @@
  */
 import express = require('express');
 import {BaseWebSocket, WebSocket, Header} from './BaseWebSocket';
-import URLUtils = require('../../utils/URLUtils');
 import Dispositivo = require('../entities/Dispositivo');
 import Obsservable = require('../observer/Observable');
 import Observable = require("../observer/Observable");
 import DataWsDEO = require("../deo/DataWsDEO");
+import {URLUtils} from '../../utils/URLUtils';
 
 /**
  * objeto ws-servidor que se encargará
@@ -31,25 +31,25 @@ export default class ws extends BaseWebSocket
         {
             ws.instance = new ws();
             ws.observable.agregarObservadoresPredeterminados();
-            console.log('servicio iniciado.. ws singleton')
+            console.log('servicio iniciado.. ws singleton');
         }
         return ws.instance;
     }
 
     onOpen(client: WebSocket): void {
-        // var url  = client.upgradeReq.url;
-        // let codDispositivo : number = URLUtils.VerificarInteger(url, Header.codDispositivo);
-        // let codTipoDispositivo : number = URLUtils.VerificarInteger(url, Header.codTipoDispositivo);
-        // let codEmpresa : number = URLUtils.VerificarInteger(url, Header.codEmpresa);
-        // let imei : string = URLUtils.VerificarString(url, Header.imei);
-        // client[Header.codDispositivo] = codDispositivo;
-        // client[Header.codTipoDispositivo] = codTipoDispositivo;
-        // client[Header.codEmpresa] = codEmpresa;
-        // client[Header.imei] = imei;
-        //
-        // let dispositivo : Dispositivo = new Dispositivo(codDispositivo, codEmpresa, codTipoDispositivo, imei, client);
-        // this.listDispositivo.push(dispositivo);
-        // console.log(this.listDispositivo.length + ' => tamanio de clientes');
+        var url  = client.upgradeReq.url;
+        let codDispositivo : number = URLUtils.VerificarInteger(url, Header.codDispositivo);
+        let codTipoDispositivo : number = URLUtils.VerificarInteger(url, Header.codTipoDispositivo);
+        let codEmpresa : number = URLUtils.VerificarInteger(url, Header.codEmpresa);
+        let imei : string = URLUtils.VerificarString(url, Header.imei);
+        client[Header.codDispositivo] = codDispositivo;
+        client[Header.codTipoDispositivo] = codTipoDispositivo;
+        client[Header.codEmpresa] = codEmpresa;
+        client[Header.imei] = imei;
+
+        let dispositivo : Dispositivo = new Dispositivo(codDispositivo, codEmpresa, codTipoDispositivo, imei, client);
+        this.listDispositivo.push(dispositivo);
+        console.log(this.listDispositivo.length + ' => tamanio de clientes');
         client.send('estas conectado :D');
     }
 

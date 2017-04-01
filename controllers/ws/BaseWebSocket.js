@@ -6,23 +6,22 @@ var WebSocketServer = require('ws');
 var Config_1 = require('../../config/Config');
 var WebSocket = require("ws");
 exports.WebSocket = WebSocket;
-// const express = require('express');
-// const app = express();
+var URLUtils_1 = require('../../utils/URLUtils');
 var BaseWebSocket = (function () {
     function BaseWebSocket() {
         var _this = this;
         //http://stackoverflow.com/questions/22429744/how-to-setup-route-for-websocket-server-in-express
         this.ws = new WebSocketServer.Server({
             verifyClient: function (info, done) {
-                // var url  = info.req.url;
-                // if (URLUtils.VerificarInteger(url, Header.codDispositivo) &&
-                //     URLUtils.VerificarInteger(url, Header.codTipoDispositivo) &&
-                //     URLUtils.VerificarInteger(url, Header.codEmpresa) &&
-                //     URLUtils.VerificarString(url, Header.imei))
-                //    done(true);
-                // else
-                //    done(false);
-                done(true);
+                var url = info.req.url;
+                if (URLUtils_1.URLUtils.VerificarInteger(url, Header.codDispositivo) &&
+                    URLUtils_1.URLUtils.VerificarInteger(url, Header.codTipoDispositivo) &&
+                    URLUtils_1.URLUtils.VerificarInteger(url, Header.codEmpresa) &&
+                    URLUtils_1.URLUtils.VerificarString(url, Header.imei))
+                    done(true);
+                else
+                    done(false);
+                // done(true);
             }, port: Config_1.default.puertows, path: '/ws' });
         this.ws.on('connection', function (client) {
             _this.onOpen(client);

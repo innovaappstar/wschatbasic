@@ -28,5 +28,5 @@ var URLUtils = (function () {
     };
     return URLUtils;
 }());
-module.exports = URLUtils;
+exports.URLUtils = URLUtils;
 //# sourceMappingURL=URLUtils.js.map

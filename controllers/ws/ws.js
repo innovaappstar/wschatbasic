@@ -5,8 +5,10 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var BaseWebSocket_1 = require('./BaseWebSocket');
+var Dispositivo = require('../entities/Dispositivo');
 var Observable = require("../observer/Observable");
 var DataWsDEO = require("../deo/DataWsDEO");
+var URLUtils_1 = require('../../utils/URLUtils');
 /**
  * objeto ws-servidor que se encargará
  * de recepcionar toda la data de los
@@ -29,19 +31,18 @@ var ws = (function (_super) {
         return ws.instance;
     };
     ws.prototype.onOpen = function (client) {
-        // var url  = client.upgradeReq.url;
-        // let codDispositivo : number = URLUtils.VerificarInteger(url, Header.codDispositivo);
-        // let codTipoDispositivo : number = URLUtils.VerificarInteger(url, Header.codTipoDispositivo);
-        // let codEmpresa : number = URLUtils.VerificarInteger(url, Header.codEmpresa);
-        // let imei : string = URLUtils.VerificarString(url, Header.imei);
-        // client[Header.codDispositivo] = codDispositivo;
-        // client[Header.codTipoDispositivo] = codTipoDispositivo;
-        // client[Header.codEmpresa] = codEmpresa;
-        // client[Header.imei] = imei;
-        //
-        // let dispositivo : Dispositivo = new Dispositivo(codDispositivo, codEmpresa, codTipoDispositivo, imei, client);
-        // this.listDispositivo.push(dispositivo);
-        // console.log(this.listDispositivo.length + ' => tamanio de clientes');
+        var url = client.upgradeReq.url;
+        var codDispositivo = URLUtils_1.URLUtils.VerificarInteger(url, BaseWebSocket_1.Header.codDispositivo);
+        var codTipoDispositivo = URLUtils_1.URLUtils.VerificarInteger(url, BaseWebSocket_1.Header.codTipoDispositivo);
+        var codEmpresa = URLUtils_1.URLUtils.VerificarInteger(url, BaseWebSocket_1.Header.codEmpresa);
+        var imei = URLUtils_1.URLUtils.VerificarString(url, BaseWebSocket_1.Header.imei);
+        client[BaseWebSocket_1.Header.codDispositivo] = codDispositivo;
+        client[BaseWebSocket_1.Header.codTipoDispositivo] = codTipoDispositivo;
+        client[BaseWebSocket_1.Header.codEmpresa] = codEmpresa;
+        client[BaseWebSocket_1.Header.imei] = imei;
+        var dispositivo = new Dispositivo(codDispositivo, codEmpresa, codTipoDispositivo, imei, client);
+        this.listDispositivo.push(dispositivo);
+        console.log(this.listDispositivo.length + ' => tamanio de clientes');
         client.send('estas conectado :D');
     };
     ws.prototype.onTextMessage = function (data, cliente) {
