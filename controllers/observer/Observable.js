@@ -1,6 +1,7 @@
 "use strict";
 var SesionObserver = require("./SesionObserver");
 var MessageObserver_1 = require("../observer/MessageObserver");
+var SolicitudObserver_1 = require("./SolicitudObserver");
 /**
  * Created by innovaapps on 20/03/2017.
  */
@@ -10,6 +11,7 @@ var Observable = (function () {
     Observable.prototype.agregarObservadoresPredeterminados = function () {
         Observable.listObservadores.push(new SesionObserver());
         Observable.listObservadores.push(new MessageObserver_1.MessageObserver());
+        Observable.listObservadores.push(new SolicitudObserver_1.SolicitudObserver());
     };
     Observable.prototype.removerObservadoresPredeterminados = function () {
         Observable.listObservadores = [];

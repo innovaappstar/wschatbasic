@@ -17,6 +17,13 @@ var INDICES = {
             registroMessage : 1,
             nuevoMessage : 2
         }
+    },
+    TIPOSOLICITUD:{
+        indice : 4,
+        subIndices :
+        {
+            recargarMensajes : 1
+        }
     }
 };
 

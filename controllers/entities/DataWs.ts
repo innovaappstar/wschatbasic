@@ -68,5 +68,14 @@ class DataWs
     {
         return (this._subIndiceWs == INDICES.TIPOMESSAGE.subIndices.nuevoMessage);
     }
+
+    isTipoSolicitud(): boolean
+    {
+        return (this._indiceWs == INDICES.TIPOSOLICITUD.indice);
+    }
+    isRecargarMensaje(): boolean
+    {
+        return (this._subIndiceWs == INDICES.TIPOSOLICITUD.subIndices.recargarMensajes);
+    }
 }
 export = DataWs;

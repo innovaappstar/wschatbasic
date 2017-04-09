@@ -66,6 +66,12 @@ var DataWs = (function () {
     DataWs.prototype.isNuevoMessage = function () {
         return (this._subIndiceWs == indices_1.default.TIPOMESSAGE.subIndices.nuevoMessage);
     };
+    DataWs.prototype.isTipoSolicitud = function () {
+        return (this._indiceWs == indices_1.default.TIPOSOLICITUD.indice);
+    };
+    DataWs.prototype.isRecargarMensaje = function () {
+        return (this._subIndiceWs == indices_1.default.TIPOSOLICITUD.subIndices.recargarMensajes);
+    };
     return DataWs;
 }());
 module.exports = DataWs;

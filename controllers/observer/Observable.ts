@@ -4,6 +4,7 @@ import SesionObserver = require("./SesionObserver");
 import DataWs = require("../entities/DataWs");
 import WebSocket = require("ws");
 import {MessageObserver} from "../observer/MessageObserver";
+import {SolicitudObserver} from "./SolicitudObserver";
 
 /**
  * Created by innovaapps on 20/03/2017.
@@ -15,6 +16,7 @@ class Observable implements IObservable
     agregarObservadoresPredeterminados(): void {
         Observable.listObservadores.push(new SesionObserver());
         Observable.listObservadores.push(new MessageObserver());
+        Observable.listObservadores.push(new SolicitudObserver());
     }
 
     removerObservadoresPredeterminados(): void {
