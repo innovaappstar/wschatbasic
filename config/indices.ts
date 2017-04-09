@@ -9,6 +9,14 @@ var INDICES = {
             inicioSesion : 1,
             cierreSesion : 2
         }
+    },
+    TIPOMESSAGE:{
+        indice : 3,
+        subIndices :
+        {
+            registroMessage : 1,
+            nuevoMessage : 2
+        }
     }
 };
 

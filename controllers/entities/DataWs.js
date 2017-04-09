@@ -57,6 +57,15 @@ var DataWs = (function () {
     DataWs.prototype.isCierreSesion = function () {
         return (this._subIndiceWs == indices_1.default.TIPOSESION.subIndices.cierreSesion);
     };
+    DataWs.prototype.isTipoMessage = function () {
+        return (this._indiceWs == indices_1.default.TIPOMESSAGE.indice);
+    };
+    DataWs.prototype.isRegistroMessage = function () {
+        return (this._subIndiceWs == indices_1.default.TIPOMESSAGE.subIndices.registroMessage);
+    };
+    DataWs.prototype.isNuevoMessage = function () {
+        return (this._subIndiceWs == indices_1.default.TIPOMESSAGE.subIndices.nuevoMessage);
+    };
     return DataWs;
 }());
 module.exports = DataWs;

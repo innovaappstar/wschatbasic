@@ -38,22 +38,19 @@ export default class ws extends BaseWebSocket
 
     onOpen(client: WebSocket): void {
         var url  = client.upgradeReq.url;
-        let codDispositivo : number = URLUtils.VerificarInteger(url, Header.codDispositivo);
-        let codTipoDispositivo : number = URLUtils.VerificarInteger(url, Header.codTipoDispositivo);
-        let codEmpresa : number = URLUtils.VerificarInteger(url, Header.codEmpresa);
+        let codDispositivo : string = URLUtils.VerificarString(url, Header.codDispositivo);
         let imei : string = URLUtils.VerificarString(url, Header.imei);
         client[Header.codDispositivo] = codDispositivo;
-        client[Header.codTipoDispositivo] = codTipoDispositivo;
-        client[Header.codEmpresa] = codEmpresa;
         client[Header.imei] = imei;
 
-        let dispositivo : Dispositivo = new Dispositivo(codDispositivo, codEmpresa, codTipoDispositivo, imei, client);
+        let dispositivo : Dispositivo = new Dispositivo(codDispositivo, imei, client);
         this.listDispositivo.push(dispositivo);
-        console.log(this.listDispositivo.length + ' => tamanio de clientes');
+        console.log(this.listDispositivo.length + ' => tamanio de clientes : ' + codDispositivo);
         client.send('estas conectado :D');
     }
 
     onTextMessage(data: string, cliente : WebSocket): void {
+        console.log(data);
         ws.observable.notificar(new DataWsDEO(data).getDataWs(), cliente);
     }
 

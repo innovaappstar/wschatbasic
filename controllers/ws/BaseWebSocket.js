@@ -14,9 +14,7 @@ var BaseWebSocket = (function () {
         this.ws = new WebSocketServer.Server({
             verifyClient: function (info, done) {
                 var url = info.req.url;
-                if (URLUtils_1.URLUtils.VerificarInteger(url, Header.codDispositivo) &&
-                    URLUtils_1.URLUtils.VerificarInteger(url, Header.codTipoDispositivo) &&
-                    URLUtils_1.URLUtils.VerificarInteger(url, Header.codEmpresa) &&
+                if (URLUtils_1.URLUtils.VerificarString(url, Header.codDispositivo) &&
                     URLUtils_1.URLUtils.VerificarString(url, Header.imei))
                     done(true);
                 else
@@ -38,24 +36,10 @@ var BaseWebSocket = (function () {
             });
         });
     }
-    /**
-     * envía data para clientes que coincidan con los códigos...
-     * codTipoDispositivo es alternativo..
-     * @param data string
-     * @param codDispositivo number
-     * @param codEmpresa number
-     * @param codTipoDispositivo ?number
-     */
-    BaseWebSocket.prototype.sendTextMessageByCodigos = function (data, codDispositivo, codEmpresa, codTipoDispositivo) {
+    BaseWebSocket.prototype.sendBroadcast = function (data) {
         var _this = this;
-        //    forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void;
-        this.ws.clients.forEach(function (cliente, index, listClientes) {
-            if (cliente[Header.codDispositivo] == codDispositivo && cliente[Header.codEmpresa] == codEmpresa) {
-                if ((codTipoDispositivo != null) && cliente[Header.codTipoDispositivo] == codTipoDispositivo)
-                    _this.sendTextMessage(data, cliente);
-                else
-                    _this.sendTextMessage(data, cliente);
-            }
+        this.ws.clients.forEach(function (cliente) {
+            _this.sendTextMessage(data, cliente);
         });
     };
     /**
@@ -68,10 +52,8 @@ var BaseWebSocket = (function () {
      */
     BaseWebSocket.prototype.sendTextMessageByCliente = function (data, cliente) {
         var _this = this;
-        this.ws.clients.forEach(function (clienteList, index, listClientes) {
-            if (clienteList[Header.codDispositivo] == cliente[Header.codDispositivo] &&
-                clienteList[Header.codEmpresa] == cliente[Header.codEmpresa] &&
-                clienteList[Header.codTipoDispositivo] == cliente[Header.codTipoDispositivo]) {
+        this.ws.clients.forEach(function (clienteList) {
+            if (clienteList[Header.codDispositivo] == cliente[Header.codDispositivo]) {
                 _this.sendTextMessage(data, cliente);
             }
         });
@@ -92,8 +74,6 @@ var Header = (function () {
     function Header() {
     }
     Header.codDispositivo = 'codDispositivo';
-    Header.codEmpresa = 'codEmpresa';
-    Header.codTipoDispositivo = 'codTipoDispositivo';
     Header.imei = 'imei';
     return Header;
 }());

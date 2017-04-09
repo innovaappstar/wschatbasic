@@ -56,5 +56,17 @@ class DataWs
         return (this._subIndiceWs == INDICES.TIPOSESION.subIndices.cierreSesion);
     }
 
+    isTipoMessage(): boolean
+    {
+        return (this._indiceWs == INDICES.TIPOMESSAGE.indice);
+    }
+    isRegistroMessage(): boolean
+    {
+        return (this._subIndiceWs == INDICES.TIPOMESSAGE.subIndices.registroMessage);
+    }
+    isNuevoMessage(): boolean
+    {
+        return (this._subIndiceWs == INDICES.TIPOMESSAGE.subIndices.nuevoMessage);
+    }
 }
 export = DataWs;

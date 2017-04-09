@@ -9,6 +9,13 @@ var INDICES = {
             inicioSesion: 1,
             cierreSesion: 2
         }
+    },
+    TIPOMESSAGE: {
+        indice: 3,
+        subIndices: {
+            registroMessage: 1,
+            nuevoMessage: 2
+        }
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });

@@ -32,7 +32,7 @@ app.use('/', homeRoutes);
 app.use('/api/ws', wsRoutes);
 ws.getInstance();  // inicia servicio websocket
 
-app.listen(8080, function (error) {
+app.listen(config.puerto, function (error) {
     if(error)
     {
         console.log('error al iniciar el servidor ', + error)

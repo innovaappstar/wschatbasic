@@ -25,7 +25,7 @@ app.use(express.static(__dirname + '/public'));
 app.use('/', homeRoutes_1.default);
 app.use('/api/ws', wsRoutes_1.default);
 ws_1.default.getInstance(); // inicia servicio websocket
-app.listen(8080, function (error) {
+app.listen(Config_1.default.puerto, function (error) {
     if (error) {
         console.log('error al iniciar el servidor ', +error);
         return;
